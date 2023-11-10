@@ -1,24 +1,44 @@
 import { chordTypes, chords, chordsMeta } from '../data/library/chords';
 
 export class Model {
-  sections;
+  songs;
+  layout;
   title;
 
-  setData(data) {
-    this.title = data.title;
+  setSongs(songs) {
+    this.songs = songs;
+  }
 
-    this.sections = data.layout.reduce((acc, sectionName) => {
-      const section = data.sections[sectionName];
-      const sectionChords = section.map(chord => this.getChordName(chord));
+  setSong(songId) {
+    const selectedSong = this.songs.find(({ id }) => id === songId);
+
+    this.title = selectedSong.title;
+
+    this.layout = selectedSong.layout.reduce((acc, sectionName) => {
+      const section = selectedSong.sections[sectionName];
+      const sectionChords = section.reduce((acc, cur) => {
+        const chordName = this.getChordName(cur);
+
+        if (cur.repeat) {
+          const repetitions = [];
+
+          for (let i = 0; i < cur.repeat; i++) {
+            repetitions.push('');
+          }
+
+          return [...acc, chordName].concat(repetitions);
+        }
+
+        return [...acc, chordName];
+      }, []);
 
       return [...acc, { name: sectionName, chords: sectionChords }];
     }, []);
   }
 
   getChordNameBase(index, altType) {
-    index -= 1;
-    let chordName = chords[index];
-    const type = altType ?? chordsMeta[index].type;
+    let chordName = chords[index - 1];
+    const type = altType ?? chordsMeta[index - 1].type;
     const { abbr } = chordTypes[type];
     if (abbr) chordName += abbr;
     return chordName;
@@ -33,7 +53,8 @@ export class Model {
   }
 
   getChordName(chord) {
-    if (typeof chord !== 'number') return this.getChordNameFromObject(chord);
-    return this.getChordNameBase(chord);
+    return typeof chord !== 'number'
+      ? this.getChordNameFromObject(chord)
+      : this.getChordNameBase(chord);
   }
 }

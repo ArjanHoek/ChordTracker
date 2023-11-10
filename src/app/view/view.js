@@ -3,13 +3,13 @@ import { ElementCreator } from './elementCreator';
 export class View {
   titleEl;
   sectionsEl;
-  elementCreator;
+  create;
   data;
 
   constructor(model) {
     this.model = model;
     this.initElements();
-    this.elementCreator = new ElementCreator();
+    this.create = new ElementCreator();
   }
 
   initElements() {
@@ -17,15 +17,20 @@ export class View {
     this.sectionsEl = document.querySelector('#song-sections');
   }
 
+  updateUI() {
+    this.updateTitle();
+    this.updateSections();
+  }
+
   updateTitle() {
     this.titleEl.textContent = this.model.title;
   }
 
   updateSections() {
-    this.model.sections.forEach(item => {
-      const sectionEl = this.elementCreator.createSectionEl([
-        this.elementCreator.createSectionNameEl(item.name),
-        this.elementCreator.createSectionChordsEl(item.chords),
+    this.model.layout.forEach(item => {
+      const sectionEl = this.create.sectionEl([
+        this.create.sectionNameEl(item.name),
+        this.create.sectionChordsEl(item.chords),
       ]);
 
       this.sectionsEl.appendChild(sectionEl);

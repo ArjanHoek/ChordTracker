@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -8,30 +9,52 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.container {
-  max-width: 40rem;
-  margin: 5rem auto;
+.app-content {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* .chords-container {
-  display: flex;
-  gap: 1rem;
-} */
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  width: 100%;
+}
 
-.song-section {
-  margin-bottom: 2rem;
+main {
+  overflow: auto;
+}
+
+.chords-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+#song-sections {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 40rem;
+  margin: 0 auto;
 }
 
 .section-name {
   text-transform: capitalize;
   font-weight: 600;
   color: #333;
+  margin-bottom: 0.5rem;
 }
 
 .chord-name {
-  display: inline-block;
-  width: 3rem;
-  padding: 0.3rem 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  width: 5rem;
+  height: 2rem;
+  padding: 0.25rem 0.5rem;
   transition: color 0.3s, background 0.3s;
   border-right: 1px solid #333;
 }
@@ -40,8 +63,4 @@ body {
   color: #fff;
   background-color: #333;
   cursor: pointer;
-}
-
-h1 {
-  margin-bottom: 1.5rem;
 }

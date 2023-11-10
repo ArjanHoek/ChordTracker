@@ -8,12 +8,11 @@ export class Controller {
   }
 
   loadSongs(songs) {
-    this.loadSong(songs[0]);
+    this.model.setSongs(songs);
   }
 
-  loadSong(songData) {
-    this.model.setData(songData);
-    this.view.updateTitle();
-    this.view.updateSections();
+  loadSong(id) {
+    this.model.setSong(id);
+    this.view.updateUI();
   }
 }

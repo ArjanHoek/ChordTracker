@@ -1,8 +1,13 @@
 export const unchainMyHeart = {
+  id: 'song-1',
   title: 'Unchain My Heart',
   key: 'C',
   sections: {
-    verse: [6, 6, 6, 6, 2, 2, 6, 6],
+    verse: [
+      { index: 6, repeat: 3 },
+      { index: 2, repeat: 1 },
+      { index: 6, repeat: 1 },
+    ],
     chorus: [
       2,
       6,
@@ -20,12 +25,18 @@ export const unchainMyHeart = {
     ],
     break: [6, 6],
     bridge: [
-      2,
-      2,
-      6,
-      6,
-      2,
-      2,
+      {
+        index: 2,
+        repeat: 1,
+      },
+      {
+        index: 6,
+        repeat: 1,
+      },
+      {
+        index: 2,
+        repeat: 1,
+      },
       {
         index: 3,
         type: 'major',
@@ -38,14 +49,18 @@ export const unchainMyHeart = {
       },
     ],
     solo: [
-      6,
-      6,
-      6,
-      6,
-      2,
-      2,
-      6,
-      6,
+      {
+        index: 6,
+        repeat: 3,
+      },
+      {
+        index: 2,
+        repeat: 1,
+      },
+      {
+        index: 6,
+        repeat: 1,
+      },
       {
         index: 4,
         extensions: ['9'],
@@ -57,8 +72,11 @@ export const unchainMyHeart = {
       },
     ],
     outro: [
-      6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,
-      6, 6, 6,
+      {
+        index: 6,
+        repeat: 13,
+        numRepetitions: true,
+      },
     ],
     end: [
       {

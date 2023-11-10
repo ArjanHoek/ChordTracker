@@ -1,26 +1,26 @@
 export class ElementCreator {
-  createSectionNameEl(name) {
+  sectionNameEl(name) {
     return this.el('p', {
       classes: ['section-name'],
       text: name,
     });
   }
 
-  createChordEl(chordName) {
+  chordEl(chordName) {
     return this.el('div', {
       classes: ['chord-name'],
       text: chordName,
     });
   }
 
-  createSectionChordsEl(chords) {
+  sectionChordsEl(chords) {
     return this.el('div', {
       classes: ['chords-container'],
-      children: chords.map(chordName => this.createChordEl(chordName)),
+      children: chords.map(chordName => this.chordEl(chordName)),
     });
   }
 
-  createSectionEl(children = []) {
+  sectionEl(children) {
     return this.el('div', {
       classes: ['song-section'],
       children,
