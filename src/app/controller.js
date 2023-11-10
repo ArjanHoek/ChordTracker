@@ -1,12 +1,19 @@
 export class Controller {
   view;
+  model;
 
-  constructor(view) {
+  constructor(view, model) {
     this.view = view;
+    this.model = model;
   }
 
-  loadSong(song) {
-    this.view.showTitle(song.title);
-    this.view.showChords(song.sections, song.layout);
+  loadSongs(songs) {
+    this.loadSong(songs[0]);
+  }
+
+  loadSong(songData) {
+    this.model.setData(songData);
+    this.view.updateTitle();
+    this.view.updateSections();
   }
 }

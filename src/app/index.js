@@ -1,8 +1,14 @@
 import { Controller } from './controller';
-import { unchainMyHeart } from './data/songs/unchain-my-heart';
-import { View } from './view';
+import { songs } from './data/songs';
+import { Model } from './model/model';
+import { View } from './view/view';
 
-const view = new View();
-const controller = new Controller(view);
+const init = () => {
+  const model = new Model();
+  const view = new View(model);
+  const controller = new Controller(view, model);
 
-controller.loadSong(unchainMyHeart);
+  controller.loadSongs(songs);
+};
+
+init();
