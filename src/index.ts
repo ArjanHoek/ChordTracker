@@ -1,3 +1,3 @@
 import './style.css';
 
-import './rxjs';
+import './app';
