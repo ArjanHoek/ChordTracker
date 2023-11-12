@@ -5,6 +5,8 @@ export class Model {
   layout;
   title;
 
+  transpose = 0;
+
   setSongs(songs) {
     this.songs = songs;
   }
@@ -56,5 +58,9 @@ export class Model {
     return typeof chord !== 'number'
       ? this.getChordNameFromObject(chord)
       : this.getChordNameBase(chord);
+  }
+
+  setTranspose(value) {
+    this.transpose += value;
   }
 }

@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Chord Tracker</title>
     <script src="bundle.js" defer></script>
   </head>
   <body>
-    <div class="app-content">
-      <header>
-        <h1 id="song-title"></h1>
-      </header>
-      <main>
-        <div id="song-sections"></div>
-      </main>
-    </div>
+    <header>
+      <h1 id="song-title"></h1>
+
+      <div id="js-transpose" class="buttons">
+        <button value="-1">-1</button>
+        <div id="transpose"></div>
+        <button value="1">+1</button>
+      </div>
+    </header>
+    <main>
+      <div id="song-sections"></div>
+    </main>
   </body>
 </html>

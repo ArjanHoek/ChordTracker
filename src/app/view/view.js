@@ -3,6 +3,7 @@ import { ElementCreator } from './elementCreator';
 export class View {
   titleEl;
   sectionsEl;
+  transposeEl;
   create;
   data;
 
@@ -12,18 +13,35 @@ export class View {
     this.create = new ElementCreator();
   }
 
+  addTransposeHandler(handler) {
+    const transpose = document.querySelector('#js-transpose');
+
+    transpose.addEventListener('click', ({ target }) => {
+      const btn = target.closest('button');
+      if (!btn) return;
+
+      handler(+btn.value);
+    });
+  }
+
   initElements() {
     this.titleEl = document.querySelector('#song-title');
     this.sectionsEl = document.querySelector('#song-sections');
+    this.transposeEl = document.querySelector('#transpose');
   }
 
   updateUI() {
     this.updateTitle();
     this.updateSections();
+    this.updateTranspose();
   }
 
   updateTitle() {
     this.titleEl.textContent = this.model.title;
+  }
+
+  updateTranspose() {
+    this.transposeEl.textContent = this.model.transpose;
   }
 
   updateSections() {
