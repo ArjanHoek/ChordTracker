@@ -20,8 +20,6 @@ export class Controller {
 
   transpose(value) {
     this.model.setTranspose(value);
-    console.log(this.model.transpose);
-
     this.view.updateTranspose();
   }
 }
